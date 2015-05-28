@@ -32,7 +32,6 @@ var BILLING_RESPONSE_RESULT = {
 
 function init() {
     if (initialized) return;
-    initialized = true;
 
     for (var i = 0; i < store.products.length; ++i)
         skus.push(store.products[i].id);
@@ -51,6 +50,7 @@ function init() {
 }
 
 function iabReady() {
+    initialized = true;
     store.log.debug("android -> ready");
     store.android.getAvailableProducts(iabLoaded, function(err) {
         store.error({

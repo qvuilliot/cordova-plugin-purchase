@@ -856,7 +856,6 @@ store.verbosity = 0;
     };
     function init() {
         if (initialized) return;
-        initialized = true;
         for (var i = 0; i < store.products.length; ++i) skus.push(store.products[i].id);
         store.android.init(iabReady, function(err) {
             store.error({
@@ -868,6 +867,7 @@ store.verbosity = 0;
         }, skus);
     }
     function iabReady() {
+        initialized = true;
         store.log.debug("android -> ready");
         store.android.getAvailableProducts(iabLoaded, function(err) {
             store.error({
